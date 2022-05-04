@@ -9,21 +9,22 @@ void persegiPanjang::output(){
     
     cout << "Titik Tengah X : " << (this->xMaks - this->xMin)/2 + this->xMin; cout << endl;
     cout << "Titik Tengah Y : " << (this->yMaks - this->yMin)/2 + this->yMin; cout << endl;
-    cout << "Panjang (xMaks - xMin) : " << panjang; cout << endl;
-    cout << "Lebar (yMaks - yMin) : " << lebar; cout << endl;
+    cout << "Panjang (Sumbu X) : " << panjang; cout << endl;
+    cout << "Lebar (Sumbu Y) : " << lebar; cout << endl;
     cout << "Nilai xMin : " << this->xMin; cout << endl;
     cout << "Nilai xMmaks : " << this->xMaks; cout << endl;
     cout << "Nilai yMin : " << this->yMin; cout << endl;
     cout << "Nilai yMaks : " << this->yMaks; cout << endl;
 }
 
+//Mencari xMin, yMin, xMaks, yMaks
 persegiPanjang::persegiPanjang(float titikTengahX, float titikTengahY, float panjang, float lebar){
     this->xMin = titikTengahX - (panjang/2);
     this->yMin = titikTengahY - (lebar/2);
     this->xMaks = titikTengahX + (panjang/2);
     this->yMaks = titikTengahY + (lebar/2);
 }
-
+//Operator (==) untuk mencari apakah 2 persegi panjang beririsan atau tidak
 bool persegiPanjang::operator==(persegiPanjang const &baru)const{
     if (this->xMaks > baru.xMin && this->xMin < baru.xMaks && this->yMaks > baru.yMin && this->yMin < baru.yMaks){
         return true;
@@ -31,7 +32,7 @@ bool persegiPanjang::operator==(persegiPanjang const &baru)const{
         return false;
     }
 }
-
+//operator (+) menambah luasan persegi panjang dengan menggabungkan kedua luasan persegi panjang
 persegiPanjang persegiPanjang::operator+(persegiPanjang const &baru){
     persegiPanjang temp(0,0,0,0);
 
@@ -45,7 +46,7 @@ persegiPanjang persegiPanjang::operator+(persegiPanjang const &baru){
     }
     return temp;
 }
-
+//operator (-) mengambil irisan dari kedua buah persegipanjang
 persegiPanjang persegiPanjang::operator-(persegiPanjang const &baru){
     persegiPanjang temp(0,0,0,0);
 
@@ -59,7 +60,7 @@ persegiPanjang persegiPanjang::operator-(persegiPanjang const &baru){
     }
     return temp;
 }
-
+//operator (++) membuat luasan menjadi 2 kali luasan semula
 void persegiPanjang::operator++(){
     float panjang = 0, lebar = 0, xMidpoint = 0, yMidpoint = 0;
 
@@ -76,7 +77,7 @@ void persegiPanjang::operator++(){
     this->xMaks = xMidpoint + panjang/2;
     this->yMaks = yMidpoint + lebar/2;
 }
-
+//operator (--) membuat luasan menjadi 1/2 kali luasan semula
 void persegiPanjang::operator--(){
     float panjang = 0, lebar = 0, xMidpoint = 0, yMidpoint = 0;
 
@@ -93,6 +94,8 @@ void persegiPanjang::operator--(){
     this->xMaks = xMidpoint + panjang/2;
     this->yMaks = yMidpoint + lebar/2;
 }
+void persegiPanjang::operator++(int){}
+void persegiPanjang::operator--(int){}
 
 float persegiPanjang::operator[](int pilihan){
     switch (pilihan){
