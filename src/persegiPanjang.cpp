@@ -56,7 +56,7 @@ persegiPanjang persegiPanjang::operator-(persegiPanjang const &baru){
         temp.xMaks = min(this-> xMaks,baru.xMaks);
         temp.yMaks = min(this-> yMaks,baru.yMaks);
     }else{
-        cout << "Kedua bangun tidak beririsan";
+        cout << "Kedua bangun tidak beririsan" << endl;
     }
     return temp;
 }
